@@ -25,11 +25,11 @@ jobs:
 
     - name: Build Docker images
       run: |
-        docker-compose build
+        docker compose build
 
     - name: Run containers
       run: |
-        docker-compose up -d
+        docker compose up -d
         sleep 10
 
     - name: Test backend health
@@ -41,7 +41,7 @@ jobs:
         curl -f http://localhost || exit 1
 
     - name: Stop containers
-      run: docker-compose down
+      run: docker compose down
 
     - name: Login to Docker Hub
       if: github.event_name == 'push'
